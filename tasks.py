@@ -327,6 +327,28 @@ def newyear_chalenge10():
     except BreakLoops:
         pass
 
+def newyearchalenge22():
+    n = int(input())
+    k = int(input())
+    if k%2 == 1: # если k не четное
+        return  k//2 + 1
+    else:
+        if n%2 == 0:
+            return n//2 + k//2
+        else:
+            return n // 2 + k // 2+1
+
+def newyearchalenge23():
+    import itertools
+    for data in itertools.product('+-', repeat=40):
+        ddd = ''
+        for num, ff in enumerate(data, start=1):
+            ddd += ff + str(num)
+        if eval(ddd) == 0:
+            print(''.join(data))
+
+
+
 if __name__ == '__main__':
     data = [4,
             8,
@@ -348,7 +370,15 @@ if __name__ == '__main__':
             39,
             1098,
             222,
-            69]
+            69,
+            96,
+            5234]
     print(len(data))
+    # print(newyearchalenge23())
+
+
+
+
+
 
 
