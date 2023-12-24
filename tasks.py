@@ -266,8 +266,6 @@ def type27(filename):
         rezult = copy.deepcopy(listmax)
 
 
-
-
 def newyear_chalenge1():
     string = 'ЗЖ АЮДЮЖФВ, АДЗВ Б ЗРЮЖХ ЖЮ ДЧЪБЛ ЙЗЯЭЮКЛЫЗ'
     alphabeet = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ'
@@ -313,40 +311,46 @@ def newyear_chalenge5():
 
 class BreakLoops(Exception):
     pass
+
+
 def newyear_chalenge10():
     try:
         for a in range(27, 201):
             print(f'{a=}')
-            for b in range(a+1, 201):
-                for c in range(b+1, 201):
-                    for d in range(c+1, 201):
-                        for e in range(d+1, 201):
+            for b in range(a + 1, 201):
+                for c in range(b + 1, 201):
+                    for d in range(c + 1, 201):
+                        for e in range(d + 1, 201):
                             if ((a ** 5 + b ** 5 + c ** 5 + d ** 5) == e ** 5):
                                 print(a, b, c, d, e)
                                 raise BreakLoops
     except BreakLoops:
         pass
 
+
 def newyearchalenge22():
     n = int(input())
     k = int(input())
-    if k%2 == 1: # если k не четное
-        return  k//2 + 1
+    if k % 2 == 1:  # если k не четное
+        return k // 2 + 1
     else:
-        if n%2 == 0:
-            return n//2 + k//2
+        if n % 2 == 0:
+            return n // 2 + k // 2
         else:
-            return n // 2 + k // 2+1
+            return n // 2 + k // 2 + 1
+
 
 def newyearchalenge23():
     import itertools
+    count = 0
     for data in itertools.product('+-', repeat=40):
         ddd = ''
         for num, ff in enumerate(data, start=1):
             ddd += ff + str(num)
         if eval(ddd) == 0:
+            count += 1
             print(''.join(data))
-
+    return f'{count=}'
 
 
 if __name__ == '__main__':
@@ -372,13 +376,7 @@ if __name__ == '__main__':
             222,
             69,
             96,
-            5234]
+            5234,
+            777]
     print(len(data))
     # print(newyearchalenge23())
-
-
-
-
-
-
-
