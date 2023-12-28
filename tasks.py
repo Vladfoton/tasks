@@ -1,4 +1,5 @@
 import copy
+import itertools
 import turtle
 
 
@@ -352,8 +353,27 @@ def newyearchalenge23():
             print(''.join(data))
     return f'{count=}'
 
+def newyearchalenge_final():
+    def get_biggest(numbers: list) -> int:
+        if numbers:
+            maxnum = ""
+            maxlen = max((len(str(i)) for i in numbers))
+            sortednum = sorted(numbers, key=lambda x: str(x) * maxlen, reverse=True)
+            dd = "".join(map(str, sortednum))
+            return int(dd)
+        else:
+            return -1
+    def get_lower(numbers: list) -> int:
+        if numbers:
+            maxnum = ""
+            maxlen = max((len(str(i)) for i in numbers))
+            sortednum = sorted(numbers, key=lambda x: str(x) * maxlen, reverse=False)
+            dd = "".join(map(str, sortednum))
+            return int(dd)
+        else:
+            return -1
 
-if __name__ == '__main__':
+
     data = [4,
             8,
             15,
@@ -378,5 +398,49 @@ if __name__ == '__main__':
             96,
             5234,
             777]
-    print(len(data))
-    # print(newyearchalenge23())
+
+
+    for i in range(len(data)):
+        if data[i]%2 == 0:
+            data[i] = data[i]*data[i]
+        else:
+            data[i] = data[i]*2
+    print(data)
+
+    # for i in range(len(data)):
+    #     if i%2 == 0:
+    #         data[i] = data[i]*data[i]
+    #     else:
+    #         data[i] = data[i]*2
+    rezult=[]
+    for i in data:
+        if i % 24 != 0:
+            rezult.append(i)
+    print(rezult)
+    # print(len(rezult))
+
+    max_number =get_biggest(rezult)
+    min_number = get_lower(rezult)
+
+
+    print(max_number)
+    print(min_number)
+    print(max_number + min_number)
+
+def calc_summ_digits(n:int) -> int:
+    def calc_summ(num):
+        summ_digits = 0
+        for i in str(num):
+            summ_digits += int(i)
+        return summ_digits
+    summ_digits =0
+    for i in range (1, 10**n+1):
+        summ_digits+=calc_summ(i)
+    return summ_digits
+
+
+
+
+if __name__ == '__main__':
+    with open('rezult.txt', 'w') as f:
+        print(calc_summ_digits(18), file = f)
